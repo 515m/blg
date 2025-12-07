@@ -30,4 +30,15 @@ window.addEventListener("resize", () => {
 
 const d = new Date();
 let copyrightyear = d.getFullYear();
-document.getElementById("copyright").innerText = copyrightyear; 
+document.getElementById("copyright").innerText = copyrightyear;
+
+var $temp = $("<input>");
+var $url = $(location).attr('href');
+
+$('.clipboard').on('click', function() {
+  $("body").append($temp);
+  $temp.val($url).select();
+  document.execCommand("copy");
+  $temp.remove();
+  $(".clipboard").text("URL copied!");
+});
